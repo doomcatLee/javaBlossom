@@ -1,4 +1,6 @@
 import java.util.ArrayList;
+import java.util.List;
+import java.time.LocalDateTime;
 
 public class User{
   private String mName;
@@ -6,6 +8,9 @@ public class User{
   private int mPassword;
   private String mEmail;
   private ArrayList<String> mContent;
+  private LocalDateTime mCompletedAt;
+  private static ArrayList<User> instances = new ArrayList<User>();
+  private int mId;
 
   public User(String a, String b, int c, String d, ArrayList<String> e){
     mName = a;
@@ -13,8 +18,11 @@ public class User{
     mPassword = c;
     mEmail = d;
     mContent = e;
+    instances.add(this);
+    mId = instances.size();
   }
 
+  //Getters
   public String getName(){
     return mName;
   }
@@ -35,6 +43,16 @@ public class User{
     return mContent;
   }
 
+  public int getId() {
+   return mId;
+  }
+
+  public static List<User> all() {
+    return instances;
+  }
+
+
+  //Setters
   public void setName(String input){
     mName = input;
   }
@@ -57,6 +75,16 @@ public class User{
 
   public String toString(){
     return mName + mUserName + mEmail + mPassword + mContent;
+  }
+
+
+  //Cool methods here:
+  public static void clear() {
+    instances.clear();
+  }
+
+  public static User find(int id) {
+    return instances.get(id - 1);
   }
 
 }
