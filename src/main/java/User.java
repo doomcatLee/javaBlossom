@@ -12,12 +12,12 @@ public class User{
   private static ArrayList<User> instances = new ArrayList<User>();
   private int mId;
 
-  public User(String a, String b, int c, String d, ArrayList<String> e){
+  public User(String a, String b, int c, String d){
     mName = a;
     mUserName = b;
     mPassword = c;
     mEmail = d;
-    mContent = e;
+    // mContent = e;
     instances.add(this);
     mId = instances.size();
   }
